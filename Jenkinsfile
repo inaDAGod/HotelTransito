@@ -14,7 +14,7 @@ pipeline {
         stage('Clonar repositorio') {
             steps {
                 git branch: "jhuls"
-                git 'https://github.com/Jhuly1215/HotelTransito.git'
+                url: 'https://github.com/Jhuly1215/HotelTransito.git'
                 credentialsId: '7a4ed59d-b080-4c62-bf88-82a94e118c6a'
             }
         }

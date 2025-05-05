@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     triggers {
-        githubPush()  // Este es el trigger para builds automáticos en push
+        githubPush()
     }
 
     environment {
@@ -13,9 +13,9 @@ pipeline {
     stages {
         stage('Clonar repositorio') {
             steps {
-                git branch: "jhuls"
-                url: 'https://github.com/Jhuly1215/HotelTransito.git'
-                credentialsId: '7a4ed59d-b080-4c62-bf88-82a94e118c6a'
+                git url: 'https://github.com/Jhuly1215/HotelTransito.git',
+                    branch: 'jhuls',
+                    credentialsId: '7a4ed59d-b080-4c62-bf88-82a94e118c6a'
             }
         }
 

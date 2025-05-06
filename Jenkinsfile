@@ -5,11 +5,6 @@ pipeline {
         githubPush()
     }
 
-    environment {
-        JAVA_HOME = "/usr/lib/jvm/java-17-openjdk"
-        PATH = "${JAVA_HOME}/bin:${PATH}"
-    }
-
     stages {
         stage('Clonar repositorio') {
             steps {

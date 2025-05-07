@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     triggers {
-        githubPush() // Se ejecuta cuando GitHub envía un webhook de push
+        githubPush() // Trigger por webhook de GitHub
     }
 
     environment {
@@ -16,27 +16,36 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Verificar archivos') {
             steps {
-                echo 'No se requiere build para HTML estático'
-                bat 'if not exist src\\index.html exit /b 1'
+                echo 'Verificando archivos HTML...'
+                bat '''
+                if not exist src\\index.html (
+                    echo "index.html no encontrado en src"
+                    exit /b 1
+                )
+                '''
             }
         }
 
         stage('Deploy') {
             steps {
                 echo "Desplegando en Tomcat..."
-                bat "xcopy /E /I /Y src ${DEPLOY_DIR}"
+                bat '''
+                if exist "%DEPLOY_DIR%" rmdir /S /Q "%DEPLOY_DIR%"
+                mkdir "%DEPLOY_DIR%"
+                xcopy /E /I /Y src "%DEPLOY_DIR%"
+                '''
             }
         }
     }
 
     post {
         success {
-            echo "¡Despliegue exitoso!"
+            echo "✅ ¡Despliegue exitoso!"
         }
         failure {
-            echo "Hubo un error durante el pipeline."
+            echo "❌ Hubo un error durante el pipeline."
         }
     }
 }

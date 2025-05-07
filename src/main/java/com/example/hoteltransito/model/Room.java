@@ -1,7 +1,5 @@
 package com.example.hoteltransito.model;
-
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity

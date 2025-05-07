@@ -1,5 +1,4 @@
 package com.example.hoteltransito.repository;
-
 import com.example.hoteltransito.model.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

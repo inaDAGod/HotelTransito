@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    triggers {
-        githubPush() // Trigger por webhook de GitHub
-    }
-
     environment {
         DEPLOY_DIR = 'C:/xampp/tomcat/webapps/HotelTransito'
     }

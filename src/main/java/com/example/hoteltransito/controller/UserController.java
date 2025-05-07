@@ -1,5 +1,4 @@
 package com.example.hoteltransito.controller;
-
 import com.example.hoteltransito.model.User;
 import com.example.hoteltransito.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
